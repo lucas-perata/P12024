@@ -133,3 +133,4 @@ $RECYCLE.BIN/
 _NCrunch*
 *.vsidx
 .vs/P12024/v17/.wsuo
+*.sqlite
