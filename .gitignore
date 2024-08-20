@@ -134,3 +134,13 @@ _NCrunch*
 *.vsidx
 .vs/P12024/v17/.wsuo
 *.sqlite
+
+/.vs/
+*.v2
+*.bin
+LabPractica/.vs/LabPractica/v17/DocumentLayout.backup.json
+LabPractica/.vs/LabPractica/v17/DocumentLayout.json
+/LabPractica/.vs
+/LabPractica/.vs
+/LabPractica/.vs/LabPractica
+/LabPractica/.vs/LabPractica/v17
