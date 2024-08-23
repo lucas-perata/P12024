@@ -137,10 +137,11 @@ _NCrunch*
 
 /.vs/
 *.v2
-*.bin
-LabPractica/.vs/LabPractica/v17/DocumentLayout.backup.json
-LabPractica/.vs/LabPractica/v17/DocumentLayout.json
-/LabPractica/.vs
-/LabPractica/.vs
+/LabPractica/.vs/ProjectEvaluation
 /LabPractica/.vs/LabPractica
+/LabPractica/.vs
+/LabPractica
 /LabPractica/.vs/LabPractica/v17
+LabPractica/.vs/LabPractica/v17/DocumentLayout.json
+/LabPractica/.vs/LabPractica/v17
+*.json
