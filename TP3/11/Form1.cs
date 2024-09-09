@@ -34,24 +34,47 @@ namespace _11
 
         public bool EndGame()
         {
-            if(b1.Text.Equals("X")  && b2.Text.Equals("X") && b3.Text.Equals("X")) { play = false; ganador = "Ganador Jugador X" ; return true; }
-            else if (b1.Text.Equals("O") && b2.Text.Equals("O") && b3.Text.Equals("O")) { play = false;ganador = "Ganador Jugador O"; return true; }
+            if(b1.Text.Equals("X")  && b2.Text.Equals("X") && b3.Text.Equals("X")) 
+            { play = false; ganador = "Ganador Jugador X" ; return true; }
+            else if (b1.Text.Equals("O") && b2.Text.Equals("O") && b3.Text.Equals("O")) 
+            { play = false;ganador = "Ganador Jugador O"; return true; }
 
-            if (b4.Text.Equals("X") && b5.Text.Equals("X") && b6.Text.Equals("X")) { play = false; return true; }
-            else if (b4.Text.Equals("O") && b5.Text.Equals("O") && b6.Text.Equals("O")) { play = false; return true; }
+            if (b4.Text.Equals("X") && b5.Text.Equals("X") && b6.Text.Equals("X")) 
+            { play = false; ganador = "Ganador Jugador X"; return true; }
+            else if (b4.Text.Equals("O") && b5.Text.Equals("O") && b6.Text.Equals("O")) 
+            { play = false; ganador = "Ganador Jugador O"; return true; }
 
-            if (b7.Text.Equals("X") && b8.Text.Equals("X") && b9.Text.Equals("X")) { play = false; return true; }
-            else if (b7.Text.Equals("O") && b8.Text.Equals("O") && b9.Text.Equals("O")) { play = false; return true; }
+            if (b7.Text.Equals("X") && b8.Text.Equals("X") && b9.Text.Equals("X")) 
+            { play = false; return true; }
+            else if (b7.Text.Equals("O") && b8.Text.Equals("O") && b9.Text.Equals("O")) 
+            { play = false; return true; }
 
 
-            if (b1.Text.Equals("X") && b5.Text.Equals("X") && b9.Text.Equals("X")) { play = false; return true; }
-            else if (b1.Text.Equals("O") && b5.Text.Equals("O") && b9.Text.Equals("O")) { play = false; return true; }
+            if (b1.Text.Equals("X") && b5.Text.Equals("X") && b9.Text.Equals("X")) 
+            { play = false; return true; }
+            else if (b1.Text.Equals("O") && b5.Text.Equals("O") && b9.Text.Equals("O")) 
+            { play = false; return true; }
             
-            if (b7.Text.Equals("X") && b5.Text.Equals("X") && b3.Text.Equals("X")) { play = false; return true; }
-            else if (b7.Text.Equals("O") && b5.Text.Equals("O") && b3.Text.Equals("O")) { play = false; return true; }
+            if (b7.Text.Equals("X") && b5.Text.Equals("X") && b3.Text.Equals("X")) 
+            { play = false; return true; }
+            else if (b7.Text.Equals("O") && b5.Text.Equals("O") && b3.Text.Equals("O")) 
+            { play = false; return true; }
 
-            if (b1.Text.Equals("X") && b4.Text.Equals("X") && b7.Text.Equals("X")) { play = false; return true; }
-            else if (b1.Text.Equals("O") && b4.Text.Equals("O") && b7.Text.Equals("O")) { play = false; return true; }
+
+            if (b1.Text.Equals("X") && b4.Text.Equals("X") && b7.Text.Equals("X"))
+            { play = false; ganador = "Ganador Jugador X"; return true; }
+            else if (b1.Text.Equals("O") && b4.Text.Equals("O") && b7.Text.Equals("O"))
+            { play = false; ganador = "Ganador Jugador O"; return true; }
+
+            if (b2.Text.Equals("X") && b5.Text.Equals("X") && b8.Text.Equals("X"))
+            { play = false; ganador = "Ganador Jugador X"; return true; }
+            else if (b2.Text.Equals("O") && b5.Text.Equals("O") && b8.Text.Equals("O"))
+            { play = false; ganador = "Ganador Jugador O"; return true; }
+
+            if (b3.Text.Equals("X") && b6.Text.Equals("X") && b9.Text.Equals("X"))
+            { play = false; ganador = "Ganador Jugador X"; return true; }
+            else if (b3.Text.Equals("O") && b6.Text.Equals("O") && b9.Text.Equals("O"))
+            { play = false; ganador = "Ganador Jugador O"; return true; }
 
             return false; 
 
