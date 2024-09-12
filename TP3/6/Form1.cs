@@ -19,6 +19,7 @@ namespace _6
 
         private void button1_Click(object sender, EventArgs e)
         {
+            listView1.Items.Clear();
             int n = Convert.ToInt32(numericUpDown1.Value);
 
             foreach(int num in fibo(n))

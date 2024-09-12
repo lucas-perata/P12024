@@ -12,8 +12,9 @@ namespace _9
 {
     public partial class Form1 : Form
     {
-        public int tiradas;
-        public int uno, dos, tres, cuatro, cinco, seis;
+        public int tiradas = 0;
+        public int uno = 0, dos = 0, tres = 0, cuatro = 0, cinco = 0, seis = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -33,14 +34,16 @@ namespace _9
             if (dado1 == 5 || dado2 == 5) { cinco++; }
             if (dado1 == 6 || dado2 == 6) { seis++; }
 
+            
+
+            if(tiradas == 1) { dataGridView1.Rows.Add(); }
+
             dataGridView1.Rows[0].Cells[0].Value = uno;
             dataGridView1.Rows[0].Cells[1].Value = dos;
             dataGridView1.Rows[0].Cells[2].Value = tres;
             dataGridView1.Rows[0].Cells[3].Value = cuatro;
             dataGridView1.Rows[0].Cells[4].Value = cinco;
             dataGridView1.Rows[0].Cells[5].Value = seis;
-
-            if(tiradas == 1) { dataGridView1.Rows.Add(); }
 
             dataGridView1.Rows[1].Cells[0].Value = (100 * uno) / tiradas;
             dataGridView1.Rows[1].Cells[1].Value = (100 * dos) / tiradas;

@@ -12,7 +12,7 @@ namespace _11
 {
     public partial class Form1 : Form
     {
-        private int turn =1;
+        private int turn = 1;
         private bool play = false;
         private string ganador = "";
         public Form1()
@@ -29,10 +29,22 @@ namespace _11
         {
             labelTurnos.Text = turn.ToString();
             label3.Text = ganador;
-            if (EndGame()) { label3.Text = ganador; }
+            if (CheckEndGame()) { label3.Text = ganador; }
         }
 
-        public bool EndGame()
+        public bool TieGame()
+        {
+            foreach (var control in this.Controls.OfType<Button>())
+            {
+                if (string.IsNullOrWhiteSpace(control.Text))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool CheckEndGame()
         {
             if(b1.Text.Equals("X")  && b2.Text.Equals("X") && b3.Text.Equals("X")) 
             { play = false; ganador = "Ganador Jugador X" ; return true; }
@@ -45,20 +57,20 @@ namespace _11
             { play = false; ganador = "Ganador Jugador O"; return true; }
 
             if (b7.Text.Equals("X") && b8.Text.Equals("X") && b9.Text.Equals("X")) 
-            { play = false; return true; }
+            { play = false; ganador = "Ganador Jugador X"; return true; }
             else if (b7.Text.Equals("O") && b8.Text.Equals("O") && b9.Text.Equals("O")) 
-            { play = false; return true; }
+            { play = false; ganador = "Ganador Jugador O"; return true; }
 
 
             if (b1.Text.Equals("X") && b5.Text.Equals("X") && b9.Text.Equals("X")) 
-            { play = false; return true; }
+            { play = false; ganador = "Jugador X"; return true; }
             else if (b1.Text.Equals("O") && b5.Text.Equals("O") && b9.Text.Equals("O")) 
-            { play = false; return true; }
+            { play = false; ganador = "Jugador X"; return true; }
             
             if (b7.Text.Equals("X") && b5.Text.Equals("X") && b3.Text.Equals("X")) 
-            { play = false; return true; }
+            { play = false; ganador = "Jugador X"; return true; }
             else if (b7.Text.Equals("O") && b5.Text.Equals("O") && b3.Text.Equals("O")) 
-            { play = false; return true; }
+            { play = false; ganador = "Jugador O"; return true; }
 
 
             if (b1.Text.Equals("X") && b4.Text.Equals("X") && b7.Text.Equals("X"))
@@ -76,6 +88,9 @@ namespace _11
             else if (b3.Text.Equals("O") && b6.Text.Equals("O") && b9.Text.Equals("O"))
             { play = false; ganador = "Ganador Jugador O"; return true; }
 
+
+            if(TieGame()) { play = false; ganador = "Empate"; return true; }
+
             return false; 
 
         }
@@ -83,10 +98,10 @@ namespace _11
         private void button_Click(object sender, EventArgs e)
         {
 
-            if (!EndGame() && play)
+            if (!CheckEndGame() && play)
             {
-                Button button = (Button)sender;
                 Play();
+                Button button = (Button)sender;
                 if (turn % 2 == 0)
                 { button.Text = "X"; turn++; }
                 else
@@ -94,7 +109,7 @@ namespace _11
 
                 button.Enabled = false;
 
-                EndGame();
+                CheckEndGame();
                 Play();
             }
 
@@ -105,6 +120,7 @@ namespace _11
             play = true;
             turn = 1;
             label3.Text = " ";
+            ganador = "";
 
             b1.Text = " ";
             b1.Enabled = true;
@@ -125,7 +141,7 @@ namespace _11
             b9.Text = " ";
             b9.Enabled = true;
 
-            EndGame();
+            CheckEndGame();
 
         }
     }

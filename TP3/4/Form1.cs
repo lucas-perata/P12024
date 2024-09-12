@@ -19,9 +19,14 @@ namespace _4
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int b = Convert.ToInt32(tx1.Text); 
-            int a = Convert.ToInt32(textBox2.Text);
+            int b = 0; 
+            int a = 0;  
             int resultado = 0;
+            a = tx1.Text == "" ? 0 : Convert.ToInt32(tx1.Text);
+            b = textBox2.Text == "" ? 0 : Convert.ToInt32(textBox2.Text);
+
+      
+
 
             if (radioButton1.Checked)
             {
@@ -50,6 +55,16 @@ namespace _4
             textBox3.Text = resultado.ToString(); 
         }
 
-    
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton5.Checked == true) { tx1.Enabled = false; }
+            else { tx1.Enabled = true; }
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton6.Checked == true) { tx1.Enabled = false; }
+            else { tx1.Enabled = true; }
+        }
     }
 }

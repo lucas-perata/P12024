@@ -167,18 +167,16 @@
             this.labelJugador.AutoSize = true;
             this.labelJugador.Location = new System.Drawing.Point(646, 39);
             this.labelJugador.Name = "labelJugador";
-            this.labelJugador.Size = new System.Drawing.Size(35, 13);
+            this.labelJugador.Size = new System.Drawing.Size(0, 13);
             this.labelJugador.TabIndex = 14;
-            this.labelJugador.Text = "label3";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(578, 250);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(0, 13);
             this.label3.TabIndex = 15;
-            this.label3.Text = "label3";
             // 
             // button1
             // 
