@@ -10,11 +10,15 @@ namespace Listas
     {
         public Paciente NodoInicial = null;
 
-        public void AgregarAlPrincipio(string nombre)
+        public void AgregarAlPrincipio(string nombre, int codigo, string apellido, string direccion, int telefono)
         {
             Paciente paciente = new Paciente();
             paciente.Numero = ProximoNumero();
             paciente.Nombre = nombre;
+            paciente.Apellido = apellido;
+            paciente.Codigo = codigo; 
+            paciente.Direccion = direccion;
+            paciente.Telefono = telefono;
 
             if(NodoInicial == null)
             {
@@ -27,6 +31,36 @@ namespace Listas
                 NodoInicial = paciente;
                 NodoInicial.Siguiente = aux; 
             }
+        }
+
+        public void ActualizarPaciente(int codigo, string nuevoNombre, string nuevoApellido, string nuevaDireccion, int nuevoTelefono)
+        {
+            Paciente paciente = BuscarPacientePorCodigo(codigo);
+
+            if(paciente != null)
+            {
+                paciente.Nombre = nuevoNombre;
+                paciente.Apellido = nuevoApellido;
+                paciente.Direccion = nuevaDireccion;
+                paciente.Telefono = nuevoTelefono; 
+            } 
+        }
+
+        private Paciente BuscarPacientePorCodigo(int codigo)
+        {
+            Paciente actual = NodoInicial; 
+
+            while(actual != null)
+            {
+                if(actual.Codigo == codigo)
+                {
+                    return actual; 
+                }
+
+                actual = actual.Siguiente; 
+            }
+
+            return null;
         }
 
         public void AgregarAlFinal(string nombre)
@@ -146,8 +180,5 @@ namespace Listas
             }    
         }
 
-        public void IntercambiarDerecha(int num) { }
-        public void IntercambiarIzquierda(int num) { }
-        public void Intercambiar(int num1, int num2) { }
     }
 }
