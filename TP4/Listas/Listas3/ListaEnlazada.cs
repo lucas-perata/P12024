@@ -123,6 +123,68 @@ namespace Listas3
             }
         }
 
+        public void QuitarPosicion(int num)
+        {
+            if (NodoInicial != null)
+            {
+                if (NodoInicial.Posicion == num)
+                {
+                    QuitarPrimero();
+                }
+                else
+                {
+                    Persona ultimo = BuscarUltimo(NodoInicial);
+                    if (ultimo != null && ultimo.Posicion == num)
+                    {
+                        QuitarUltimo();
+                    }
+                    else
+                    {
+                        Persona personaAnteriorAlSeleccionado = BuscarAnterior(NodoInicial, num);
+                        if (personaAnteriorAlSeleccionado != null)
+                        {
+                            personaAnteriorAlSeleccionado.Siguiente = personaAnteriorAlSeleccionado.Siguiente.Siguiente;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void QuitarPrimero()
+        {
+            if(NodoInicial != null)
+            {
+                NodoInicial = NodoInicial.Siguiente; 
+            }
+        }
+
+        public void QuitarUltimo()
+        {
+            Persona anteultimo = BuscarAnteultimo(NodoInicial); 
+
+            if(anteultimo != null)
+            {
+                anteultimo.Siguiente = null; 
+            } 
+            else
+            {
+                NodoInicial = null; 
+            }
+        }
+
+
+        private Persona BuscarAnteultimo(Persona persona)
+        {
+            if (persona == null) return null;
+
+            if (persona.Siguiente is null) return null;
+
+            if (persona.Siguiente.Siguiente != null)
+                return BuscarAnteultimo(persona.Siguiente);
+            else
+                return persona; 
+        }
+
 
     }
 }

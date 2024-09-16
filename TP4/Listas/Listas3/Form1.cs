@@ -103,5 +103,11 @@ namespace Listas3
             this.totalRecaudado.Text = recaudacion.ToString();
             recaudacion = 0; 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            boleteria.Persona.QuitarPosicion(Convert.ToInt32(this.posicionB.Value));
+            GenerarLista();
+        }
     }
 }
