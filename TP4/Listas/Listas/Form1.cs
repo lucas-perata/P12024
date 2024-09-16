@@ -58,7 +58,6 @@ namespace Listas
         {
             pacientes.AgregarAlPrincipio(this.nombre.Text, Convert.ToInt32(this.codigo.Text), this.apellidoText.Text, this.direccion.Text, Convert.ToInt32(this.telefono.Text));
             GenerarLista();
-            nombre.Text = "";
         }
 
         private void mostrarButton_Click(object sender, EventArgs e)
@@ -83,6 +82,16 @@ namespace Listas
                 this.direccion.Text, Convert.ToInt32(this.telefono.Value));
 
             GenerarLista();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int cod = Convert.ToInt32(this.despuesDeCodigo.Value);
+
+            pacientes.AgregarDespuesSeleccionado(cod, Convert.ToInt32(this.codigo.Value), this.nombre.Text,
+                this.apellidoText.Text, this.direccion.Text, Convert.ToInt32(this.telefono.Value));
+
+            GenerarLista() ;    
         }
     }
 }

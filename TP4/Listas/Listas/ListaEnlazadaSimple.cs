@@ -33,6 +33,26 @@ namespace Listas
             }
         }
 
+        public void AgregarDespuesSeleccionado(int codigoA, int codigo, string nombre, string apellido, string direccion, int telefono)
+        {
+            Paciente seleccionado = BuscarPacientePorCodigo(codigoA);
+
+            if(seleccionado != null)
+            {
+                Paciente paciente = new Paciente();
+                paciente.Numero = ProximoNumero();
+                paciente.Nombre = nombre;
+                paciente.Apellido = apellido;
+                paciente.Codigo = codigo;
+                paciente.Direccion = direccion;
+                paciente.Telefono = telefono;
+
+                paciente.Siguiente = seleccionado.Siguiente;
+                seleccionado.Siguiente = paciente; 
+            }
+            
+        }
+
         public void ActualizarPaciente(int codigo, string nuevoNombre, string nuevoApellido, string nuevaDireccion, int nuevoTelefono)
         {
             Paciente paciente = BuscarPacientePorCodigo(codigo);

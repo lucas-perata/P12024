@@ -50,10 +50,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Posición = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.despuesDeCodigo = new System.Windows.Forms.NumericUpDown();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.codigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.telefono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posicion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.despuesDeCodigo)).BeginInit();
             this.SuspendLayout();
             // 
             // agregarButton
@@ -126,7 +130,7 @@
             this.Column2,
             this.Column4,
             this.Column5});
-            this.dataGridView1.Location = new System.Drawing.Point(245, 43);
+            this.dataGridView1.Location = new System.Drawing.Point(236, 43);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(533, 198);
             this.dataGridView1.TabIndex = 12;
@@ -231,11 +235,40 @@
             this.Posición.TabIndex = 21;
             this.Posición.Text = "Posición";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(37, 377);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Código";
+            // 
+            // despuesDeCodigo
+            // 
+            this.despuesDeCodigo.Location = new System.Drawing.Point(40, 393);
+            this.despuesDeCodigo.Name = "despuesDeCodigo";
+            this.despuesDeCodigo.Size = new System.Drawing.Size(120, 20);
+            this.despuesDeCodigo.TabIndex = 23;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(177, 393);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 23);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "Agregar después de";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.despuesDeCodigo);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.Posición);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -259,6 +292,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.codigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.telefono)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.posicion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.despuesDeCodigo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,5 +321,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label Posición;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown despuesDeCodigo;
+        private System.Windows.Forms.Button button1;
     }
 }
