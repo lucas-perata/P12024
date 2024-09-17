@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Listas4
 {
@@ -10,48 +11,41 @@ namespace Listas4
     {
         public Alumno NodoInicial = null;
         public Alumno NodoActual = null;
+        public Alumno head = null; 
 
-        public void AgregarFinal(Alumno alumno)
+        public void Agregar(Alumno alumno)
         {
-            if (NodoInicial == null)
+            if (head == null)
             {
-                NodoInicial = alumno;
-                NodoInicial.Siguiente = NodoInicial;
+                head = alumno;
+                NodoInicial = alumno; 
+                head.Siguiente = head;
             }
             else
             {
-                Alumno actual = NodoInicial;
-
-                while (actual.Siguiente != NodoInicial)
+                Alumno temp = head;
+                while (temp.Siguiente != head)
                 {
-                    actual = actual.Siguiente;
+                    temp = temp.Siguiente;
                 }
-
-                actual.Siguiente = alumno;
-                alumno.Siguiente = NodoInicial;
+                temp.Siguiente = alumno;
+                alumno.Siguiente = head;
             }
         }
 
-        public void AgregarPrimero(Alumno alumno)
+        public void AgregarDespuesDe(int dni, Alumno nuevoAlumno)
         {
-            if (NodoInicial == null)
-            {
-                NodoInicial = alumno;
-                NodoInicial.Siguiente = NodoInicial;
-            }
-            else
-            {
-                Alumno actual = NodoInicial;
+            Alumno actual = BuscarAlumnoPorDni(dni);
 
-                while (actual.Siguiente != NodoInicial)
+            if(actual != null)
+            {
+                nuevoAlumno.Siguiente = actual.Siguiente;
+                actual.Siguiente = nuevoAlumno;
+
+                if(actual == head)
                 {
-                    actual = actual.Siguiente;
+                    head = nuevoAlumno;
                 }
-
-                actual.Siguiente = alumno;
-
-                alumno.Siguiente = NodoInicial;
-                NodoInicial = alumno;
             }
         }
 

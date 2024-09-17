@@ -59,7 +59,7 @@ namespace Listas4
             alumno.Edad = Convert.ToInt32(this.edad.Value);
             alumno.DNI = Convert.ToInt32(this.dni.Value); 
 
-            alumnos.AgregarPrimero(alumno);
+            alumnos.Agregar(alumno);
 
             GenerarLista();
         }
@@ -72,7 +72,9 @@ namespace Listas4
             alumno.Edad = Convert.ToInt32(this.edad.Value);
             alumno.DNI = Convert.ToInt32(this.dni.Value);
 
-            alumnos.AgregarFinal(alumno);
+            int dni = Convert.ToInt32(this.dniAuxB.Value);
+
+            alumnos.AgregarDespuesDe(dni, alumno);
 
             GenerarLista();
         }

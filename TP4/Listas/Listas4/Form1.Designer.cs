@@ -47,10 +47,13 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAgregarUltimo = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.dniAuxB = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.edad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dni)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dniAux)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dniAuxB)).BeginInit();
             this.SuspendLayout();
             // 
             // nombre
@@ -128,7 +131,7 @@
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(100, 23);
             this.btnAgregar.TabIndex = 8;
-            this.btnAgregar.Text = "Agregar Primero";
+            this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
@@ -199,11 +202,11 @@
             // 
             // btnAgregarUltimo
             // 
-            this.btnAgregarUltimo.Location = new System.Drawing.Point(33, 370);
+            this.btnAgregarUltimo.Location = new System.Drawing.Point(33, 385);
             this.btnAgregarUltimo.Name = "btnAgregarUltimo";
             this.btnAgregarUltimo.Size = new System.Drawing.Size(100, 23);
             this.btnAgregarUltimo.TabIndex = 13;
-            this.btnAgregarUltimo.Text = "Agregar Último";
+            this.btnAgregarUltimo.Text = "Agregar después de";
             this.btnAgregarUltimo.UseVisualStyleBackColor = true;
             this.btnAgregarUltimo.Click += new System.EventHandler(this.btnAgregarUltimo_Click);
             // 
@@ -216,11 +219,34 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "DNI";
             // 
+            // dniAuxB
+            // 
+            this.dniAuxB.Location = new System.Drawing.Point(177, 385);
+            this.dniAuxB.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.dniAuxB.Name = "dniAuxB";
+            this.dniAuxB.Size = new System.Drawing.Size(75, 20);
+            this.dniAuxB.TabIndex = 15;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(174, 369);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(26, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "DNI";
+            // 
             // Ejercicio4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.dniAuxB);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnAgregarUltimo);
             this.Controls.Add(this.dataGridView1);
@@ -243,6 +269,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dni)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dniAux)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dniAuxB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,6 +296,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Button btnAgregarUltimo;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown dniAuxB;
+        private System.Windows.Forms.Label label6;
     }
 }
 

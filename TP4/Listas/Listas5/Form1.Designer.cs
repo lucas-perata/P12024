@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.agregarBtn = new System.Windows.Forms.Button();
             this.nombre = new System.Windows.Forms.TextBox();
             this.apellido = new System.Windows.Forms.TextBox();
@@ -39,16 +44,12 @@
             this.codigoAux = new System.Windows.Forms.TextBox();
             this.eliminarBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.eliminarSeleccionadoBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.codigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.telefono)).BeginInit();
@@ -67,6 +68,31 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(543, 239);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Codigo";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Nombre";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Apellido";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Dirección";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Teléfono";
+            this.Column5.Name = "Column5";
             // 
             // agregarBtn
             // 
@@ -135,14 +161,14 @@
             // 
             // codigoAux
             // 
-            this.codigoAux.Location = new System.Drawing.Point(413, 349);
+            this.codigoAux.Location = new System.Drawing.Point(317, 352);
             this.codigoAux.Name = "codigoAux";
             this.codigoAux.Size = new System.Drawing.Size(100, 20);
             this.codigoAux.TabIndex = 8;
             // 
             // eliminarBtn
             // 
-            this.eliminarBtn.Location = new System.Drawing.Point(536, 349);
+            this.eliminarBtn.Location = new System.Drawing.Point(439, 352);
             this.eliminarBtn.Name = "eliminarBtn";
             this.eliminarBtn.Size = new System.Drawing.Size(75, 23);
             this.eliminarBtn.TabIndex = 9;
@@ -153,36 +179,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(413, 330);
+            this.label1.Location = new System.Drawing.Point(314, 336);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 10;
             this.label1.Text = "Código";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Codigo";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Nombre";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Apellido";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Dirección";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Teléfono";
-            this.Column5.Name = "Column5";
             // 
             // label2
             // 
@@ -214,7 +215,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(65, 212);
+            this.label5.Location = new System.Drawing.Point(62, 215);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 13);
             this.label5.TabIndex = 14;
@@ -223,17 +224,28 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(58, 247);
+            this.label6.Location = new System.Drawing.Point(62, 270);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 13);
             this.label6.TabIndex = 15;
             this.label6.Text = "Teléfono";
+            // 
+            // eliminarSeleccionadoBtn
+            // 
+            this.eliminarSeleccionadoBtn.Location = new System.Drawing.Point(642, 352);
+            this.eliminarSeleccionadoBtn.Name = "eliminarSeleccionadoBtn";
+            this.eliminarSeleccionadoBtn.Size = new System.Drawing.Size(124, 23);
+            this.eliminarSeleccionadoBtn.TabIndex = 16;
+            this.eliminarSeleccionadoBtn.Text = "Eliminar Seleccionado";
+            this.eliminarSeleccionadoBtn.UseVisualStyleBackColor = true;
+            this.eliminarSeleccionadoBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // Ejercicio5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.eliminarSeleccionadoBtn);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -284,6 +296,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button eliminarSeleccionadoBtn;
     }
 }
 

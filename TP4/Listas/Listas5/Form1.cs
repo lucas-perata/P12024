@@ -89,5 +89,14 @@ namespace Listas5
 
             GenerarLista(); 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int cod = Convert.ToInt32(dataGridView1.SelectedCells[0].Value);
+
+            pacientes.Eliminar(cod);
+
+            GenerarLista();
+        }
     }
 }
