@@ -34,9 +34,12 @@ namespace Ejercicio7
             }
         }
 
-        public void Desencolar()
+        public Cliente Desencolar()
         {
+            Cliente aux = _inicio; 
             _inicio = _inicio.Siguiente;
+
+            return aux; 
         }
 
         public Cliente Inicio
@@ -66,10 +69,10 @@ namespace Ejercicio7
 
         public void VaciarCola()
         {
-            do
+            while(!this.Vacia())
             {
                 this.Desencolar();
-            } while (!this.Vacia());
+            };
         }
 
     }

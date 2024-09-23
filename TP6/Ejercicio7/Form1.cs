@@ -50,6 +50,28 @@ namespace Ejercicio7
             {
                 CerrarCaja(abrirCaja1, cerrarCaja1, caja1);
             }
+
+            DistribuirCajaCerrada(cola1);
+          
+        }
+
+        private void DistribuirCajaCerrada(Cola _cola)
+        {
+            if(!caja1.Abierta && !caja2.Abierta && !caja3.Abierta)
+            {
+                MessageBox.Show("No se puede cerrar la caja sin perder los clientes");
+            }
+            else
+            {
+                while (_cola.Inicio != null)
+
+                {
+                    Cliente cliente = new Cliente();
+                    cliente.Total = _cola.Desencolar().Total;
+                    Distribuir(cliente);
+                }
+            }
+
         }
 
         private void abrirCaja1_Click(object sender, EventArgs e)
@@ -62,9 +84,11 @@ namespace Ejercicio7
 
         private void CerrarCaja(Button _abrir, Button _cerrar, Caja caja)
         {
-            _cerrar.Enabled = false;
-           _abrir.Enabled = true;
-            caja.Abierta = false;
+           
+                _cerrar.Enabled = false;
+                _abrir.Enabled = true;
+                caja.Abierta = false;
+            
         }
 
         private void AbrirCaja(Button _abrir, Button _cerrar, Caja caja)
@@ -114,9 +138,7 @@ namespace Ejercicio7
 
 
             ContarClientes();
-            OrganizarCobros();
-
-           
+            OrganizarCobros();     
 
         }
 
@@ -196,6 +218,9 @@ namespace Ejercicio7
                 {
                     cola3.Encolar(cliente);
                 }
+
+                ContarClientes();
+                OrganizarCobros();
             }
         }
 
@@ -203,6 +228,8 @@ namespace Ejercicio7
         private void cerrarCaja2_Click(object sender, EventArgs e)
         {
             CerrarCaja(abrirCaja2, cerrarCaja2, caja2);
+            DistribuirCajaCerrada(cola2);
+
         }
 
         private void abrirCaja2_Click(object sender, EventArgs e)
@@ -213,6 +240,7 @@ namespace Ejercicio7
         private void cerrarCaja3_Click(object sender, EventArgs e)
         {
             CerrarCaja(abrirCaja3, cerrarCaja3, caja3);
+            DistribuirCajaCerrada(cola3);
         }
 
         private void abrirCaja3_Click(object sender, EventArgs e)
