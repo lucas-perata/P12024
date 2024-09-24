@@ -344,27 +344,24 @@
             this.caja1Total.AutoSize = true;
             this.caja1Total.Location = new System.Drawing.Point(667, 360);
             this.caja1Total.Name = "caja1Total";
-            this.caja1Total.Size = new System.Drawing.Size(41, 13);
+            this.caja1Total.Size = new System.Drawing.Size(0, 13);
             this.caja1Total.TabIndex = 30;
-            this.caja1Total.Text = "label14";
             // 
             // caja2Total
             // 
             this.caja2Total.AutoSize = true;
             this.caja2Total.Location = new System.Drawing.Point(667, 380);
             this.caja2Total.Name = "caja2Total";
-            this.caja2Total.Size = new System.Drawing.Size(41, 13);
+            this.caja2Total.Size = new System.Drawing.Size(0, 13);
             this.caja2Total.TabIndex = 31;
-            this.caja2Total.Text = "label15";
             // 
             // caja3Total
             // 
             this.caja3Total.AutoSize = true;
             this.caja3Total.Location = new System.Drawing.Point(667, 399);
             this.caja3Total.Name = "caja3Total";
-            this.caja3Total.Size = new System.Drawing.Size(41, 13);
+            this.caja3Total.Size = new System.Drawing.Size(0, 13);
             this.caja3Total.TabIndex = 32;
-            this.caja3Total.Text = "label16";
             // 
             // Form1
             // 
