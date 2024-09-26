@@ -75,7 +75,7 @@ namespace Ejercicio2
         private void LimpiarInput()
         {
             this.nombreCliente.Text = "";
-            this.importeCliente.Text = "";
+            this.importeCliente.Value = 0; 
         }
     }
 }

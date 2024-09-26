@@ -122,7 +122,13 @@
             // 
             // importeCliente
             // 
+            this.importeCliente.DecimalPlaces = 2;
             this.importeCliente.Location = new System.Drawing.Point(228, 207);
+            this.importeCliente.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.importeCliente.Name = "importeCliente";
             this.importeCliente.Size = new System.Drawing.Size(120, 20);
             this.importeCliente.TabIndex = 11;

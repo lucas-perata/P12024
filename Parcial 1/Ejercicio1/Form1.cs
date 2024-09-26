@@ -32,7 +32,10 @@ namespace Ejercicio1
         private void activarBtn_Click(object sender, EventArgs e)
         {
             if (segundos > 0)  
-                timer1.Enabled = true;  
+                {timer1.Enabled = true;
+                hScrollBar1.Value = 0;
+                this.timerLabel.Text = 0.ToString();
+            }
             else 
                 MessageBox.Show("Seleccione un tiempo mayor a 0"); 
 
