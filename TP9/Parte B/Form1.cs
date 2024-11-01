@@ -20,6 +20,33 @@ namespace Parte_B
             ListarNotas();
         }
 
+        private void Listar(DataGridView dgv, FileStream file, StreamReader reader)
+        {
+            dgv.Rows.Clear();
+
+            string linea;
+            string[] splitLinea;
+
+            if (reader.Peek() > -1)
+            {
+                linea = reader.ReadLine();
+
+                while (linea != null)
+                {
+                    splitLinea = linea.Split(";");
+                    int n = dgv.Rows.Add();
+                    for (int i = 0; i < splitLinea.Length; i++)
+                    {
+                        dgv.Rows[n].Cells[i].Value = splitLinea[i];
+                    }
+                    linea = reader.ReadLine();
+                }
+            }
+
+            file.Close();
+            reader.Close();
+        }
+
         private void ListarAlumnos()
         {
             this.dataGridView1.Rows.Clear();
@@ -81,6 +108,8 @@ namespace Parte_B
         {
             FileStream archivo = new FileStream("alumnos.txt", FileMode.Append);
             StreamWriter EscritorArchivo = new StreamWriter(archivo);
+            StreamReader lector = new StreamReader(archivo);
+
             string reg;
 
             reg = dniAlumnos.Value.ToString() + ";" + nombreTxt.Text + ";" + apellidoTxt.Text;
@@ -93,8 +122,7 @@ namespace Parte_B
             nombreTxt.Text = "";
             dniAlumnos.Focus();
 
-            ListarAlumnos();
-
+            Listar(dataGridView1, archivo, lector);
         }
 
         private void submitNota_Click(object sender, EventArgs e)
@@ -124,15 +152,15 @@ namespace Parte_B
             String[] VectorRegAux = new string[0];
 
             string reg = "";
-            string dni; 
+            string dni;
 
-            while(lectorAlumnos.Peek() > -1)
+            while (lectorAlumnos.Peek() > -1)
             {
                 reg = lectorAlumnos.ReadLine();
                 VectorRegAux = reg.Split(";");
                 dni = VectorRegAux[0];
 
-                if(dni == dniAlumnos.Value.ToString())
+                if (dni == GetDni(dataGridView1))
                 {
                     reg = String.Format("{0};{1};{2}", dniAlumnos.Value.ToString(), nombreTxt.Text, apellidoTxt.Text);
                 }
@@ -165,16 +193,16 @@ namespace Parte_B
             String[] VectorRegAux = new string[0];
 
             string reg;
-            string dni; 
+            string dni;
 
-          
+
             while (lectorAlumnos.Peek() > -1)
             {
                 reg = lectorAlumnos.ReadLine();
                 VectorRegAux = reg.Split(";");
                 dni = VectorRegAux[0];
 
-                if (dni != dniAlumnos.Value.ToString())
+                if (dni != GetDni(dataGridView1))
                 {
                     escritorAlumnosAux.WriteLine(reg);
                 }
@@ -195,5 +223,97 @@ namespace Parte_B
             ListarAlumnos();
         }
 
-      }
+        private void notaEdit_Click(object sender, EventArgs e)
+        {
+            FileStream notas = new FileStream("notas.txt", FileMode.Open);
+            FileStream notasAux = new FileStream("notasAux.txt", FileMode.Create);
+            StreamReader lectorNotas = new StreamReader(notas);
+            StreamWriter escritorNotasAux = new StreamWriter(notasAux);
+            String[] VectorRegAux = new string[0];
+
+            string reg = "";
+            string dni;
+
+            while (lectorNotas.Peek() > -1)
+            {
+                reg = lectorNotas.ReadLine();
+                VectorRegAux = reg.Split(";");
+                dni = VectorRegAux[0];
+
+                if (dni == GetDni(dataGridView2))
+                {
+                    reg = String.Format("{0};{1};{2}", GetDni(dataGridView2), notaNum.Text, dateNota.Text);
+                }
+
+                escritorNotasAux.WriteLine(reg);
+            }
+
+            lectorNotas.Close();
+            notas.Close();
+            escritorNotasAux.Close();
+            notasAux.Close();
+
+            File.Delete("notas.txt");
+            File.Move("notasAux.txt", "notas.txt");
+
+            dniAlumnos.Value = 0;
+            apellidoTxt.Text = "";
+            nombreTxt.Text = "";
+
+            ListarNotas();
+        }
+
+        private void notaDelete_Click(object sender, EventArgs e)
+        {
+            FileStream notas = new FileStream("notas.txt", FileMode.Open);
+            FileStream notasAux = new FileStream("notasAux.txt", FileMode.Create);
+            StreamReader lectorNotas = new StreamReader(notas);
+            StreamWriter escritorNotasAux = new StreamWriter(notasAux);
+
+            String[] VectorRegAux = new string[0];
+
+            string reg;
+            string dni; 
+
+            while(lectorNotas.Peek() > - 1)
+            {
+                reg = lectorNotas.ReadLine();
+                VectorRegAux = reg.Split(";");
+                dni = VectorRegAux[0];
+
+                if(dni != GetDni(dataGridView2))
+                {
+                    escritorNotasAux.WriteLine(reg);
+                }
+            }
+
+            lectorNotas.Close();
+            notas.Close();
+            escritorNotasAux.Close();
+            notasAux.Close();
+
+            File.Delete("notas.txt");
+            File.Move("notasAux.txt", "notas.txt");
+
+            dniNotas.Value = 0;
+
+            ListarNotas();
+        }
+
+        private string GetDni(DataGridView dgv)
+        {
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                bool isChecked = Convert.ToBoolean(row.Cells[3].Value);
+
+                if (isChecked)
+                {
+                    string dataInColumn2 = row.Cells[0].Value.ToString(); 
+                    return dataInColumn2;
+                }
+            }
+
+            return String.Empty;
+        }
+    }
 }

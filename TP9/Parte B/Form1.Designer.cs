@@ -32,15 +32,13 @@
             DNI = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Apellido = new DataGridViewTextBoxColumn();
+            Seleccionar = new DataGridViewCheckBoxColumn();
             dataGridView2 = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dniAlumnos = new NumericUpDown();
             label1 = new Label();
             label2 = new Label();
-            button1 = new Button();
-            button2 = new Button();
+            notaEdit = new Button();
+            notaDelete = new Button();
             alumnoEdit = new Button();
             alumnoDelete = new Button();
             nombreTxt = new TextBox();
@@ -50,6 +48,10 @@
             dateNota = new DateTimePicker();
             submitAlumno = new Button();
             submitNota = new Button();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            Seleccionar1 = new DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dniAlumnos).BeginInit();
@@ -60,10 +62,10 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { DNI, Nombre, Apellido });
-            dataGridView1.Location = new Point(46, 45);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { DNI, Nombre, Apellido, Seleccionar });
+            dataGridView1.Location = new Point(22, 45);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(343, 155);
+            dataGridView1.Size = new Size(444, 155);
             dataGridView1.TabIndex = 0;
             // 
             // DNI
@@ -81,30 +83,20 @@
             Apellido.HeaderText = "Apellido";
             Apellido.Name = "Apellido";
             // 
+            // Seleccionar
+            // 
+            Seleccionar.HeaderText = "Seleccionar";
+            Seleccionar.Name = "Seleccionar";
+            // 
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });
-            dataGridView2.Location = new Point(46, 283);
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, Seleccionar1 });
+            dataGridView2.Location = new Point(22, 283);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(343, 155);
+            dataGridView2.Size = new Size(444, 155);
             dataGridView2.TabIndex = 1;
             dataGridView2.CellContentClick += dataGridView2_CellContentClick;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "DNI";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Fecha";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Nota";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
             // dniAlumnos
             // 
@@ -132,27 +124,29 @@
             label2.TabIndex = 4;
             label2.Text = "Notas";
             // 
-            // button1
+            // notaEdit
             // 
-            button1.Location = new Point(406, 358);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 5;
-            button1.Text = "Modificar";
-            button1.UseVisualStyleBackColor = true;
+            notaEdit.Location = new Point(472, 368);
+            notaEdit.Name = "notaEdit";
+            notaEdit.Size = new Size(75, 23);
+            notaEdit.TabIndex = 5;
+            notaEdit.Text = "Modificar";
+            notaEdit.UseVisualStyleBackColor = true;
+            notaEdit.Click += notaEdit_Click;
             // 
-            // button2
+            // notaDelete
             // 
-            button2.Location = new Point(406, 415);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 6;
-            button2.Text = "Borrar";
-            button2.UseVisualStyleBackColor = true;
+            notaDelete.Location = new Point(472, 415);
+            notaDelete.Name = "notaDelete";
+            notaDelete.Size = new Size(75, 23);
+            notaDelete.TabIndex = 6;
+            notaDelete.Text = "Borrar";
+            notaDelete.UseVisualStyleBackColor = true;
+            notaDelete.Click += notaDelete_Click;
             // 
             // alumnoEdit
             // 
-            alumnoEdit.Location = new Point(406, 122);
+            alumnoEdit.Location = new Point(472, 122);
             alumnoEdit.Name = "alumnoEdit";
             alumnoEdit.Size = new Size(75, 23);
             alumnoEdit.TabIndex = 7;
@@ -162,7 +156,7 @@
             // 
             // alumnoDelete
             // 
-            alumnoDelete.Location = new Point(406, 177);
+            alumnoDelete.Location = new Point(472, 177);
             alumnoDelete.Name = "alumnoDelete";
             alumnoDelete.Size = new Size(75, 23);
             alumnoDelete.TabIndex = 8;
@@ -227,6 +221,28 @@
             submitNota.UseVisualStyleBackColor = true;
             submitNota.Click += submitNota_Click;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.HeaderText = "DNI";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.HeaderText = "Fecha";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.HeaderText = "Nota";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // Seleccionar1
+            // 
+            Seleccionar1.HeaderText = "Seleccionar";
+            Seleccionar1.Name = "Seleccionar1";
+            Seleccionar1.Resizable = DataGridViewTriState.True;
+            Seleccionar1.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -241,8 +257,8 @@
             Controls.Add(nombreTxt);
             Controls.Add(alumnoDelete);
             Controls.Add(alumnoEdit);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(notaDelete);
+            Controls.Add(notaEdit);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dniAlumnos);
@@ -263,18 +279,12 @@
         #endregion
 
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn DNI;
-        private DataGridViewTextBoxColumn Nombre;
-        private DataGridViewTextBoxColumn Apellido;
         private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private NumericUpDown dniAlumnos;
         private Label label1;
         private Label label2;
-        private Button button1;
-        private Button button2;
+        private Button notaEdit;
+        private Button notaDelete;
         private Button alumnoEdit;
         private Button alumnoDelete;
         private TextBox nombreTxt;
@@ -284,5 +294,13 @@
         private DateTimePicker dateNota;
         private Button submitAlumno;
         private Button submitNota;
+        private DataGridViewTextBoxColumn DNI;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Apellido;
+        private DataGridViewCheckBoxColumn Seleccionar;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewCheckBoxColumn Seleccionar1;
     }
 }
