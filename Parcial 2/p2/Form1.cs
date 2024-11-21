@@ -96,7 +96,10 @@ namespace p2
         {
             Promedio[] promedios = gestorPromedios.ObtenerPromedios(ListarAlumnos(), ListarNotas());
             this.promediosGrid.DataSource = promedios;
-            this.mayorPromedioLabel.Text = gestorPromedios.ObtenerMejorPromedio(promedios).ToString();
+
+            Promedio mejorPromedio = gestorPromedios.ObtenerMejorPromedio(promedios);
+            this.mayorPromedioLabel.Text = mejorPromedio.ValorPromedio.ToString();
+            this.mayorPromedioLegajoLabel.Text = mejorPromedio.Legajo.ToString();
         }
 
         private void Form1_Load(object sender, EventArgs e)

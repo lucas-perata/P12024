@@ -57,15 +57,15 @@ namespace p2
             return promedios.ToArray();
         }
 
-        public double ObtenerMejorPromedio(Promedio[] promedios)
+        public Promedio ObtenerMejorPromedio(Promedio[] promedios)
         {
-            double mejorPromedio = 0;
+            Promedio mejorPromedio = new Promedio();
 
             foreach (Promedio p in promedios) 
             {
-                if(p.ValorPromedio > mejorPromedio)
+                if(p.ValorPromedio > mejorPromedio.ValorPromedio)
                 {
-                    mejorPromedio = p.ValorPromedio;
+                    mejorPromedio = p;
                 }
             }
             return mejorPromedio;
