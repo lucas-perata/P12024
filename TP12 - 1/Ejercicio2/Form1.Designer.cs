@@ -34,7 +34,6 @@
             this.nombreText = new System.Windows.Forms.TextBox();
             this.duracionInt = new System.Windows.Forms.NumericUpDown();
             this.agregarPrincipioBtn = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.agregarFinalBtn = new System.Windows.Forms.Button();
             this.cancionesList = new System.Windows.Forms.ListBox();
@@ -105,13 +104,6 @@
             this.agregarPrincipioBtn.UseVisualStyleBackColor = true;
             this.agregarPrincipioBtn.Click += new System.EventHandler(this.agregarPrincipioBtn_Click);
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(114, 204);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(342, 23);
-            this.progressBar1.TabIndex = 6;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.posicionBtn);
@@ -140,14 +132,14 @@
             // cancionesList
             // 
             this.cancionesList.FormattingEnabled = true;
-            this.cancionesList.Location = new System.Drawing.Point(114, 39);
+            this.cancionesList.Location = new System.Drawing.Point(172, 77);
             this.cancionesList.Name = "cancionesList";
             this.cancionesList.Size = new System.Drawing.Size(111, 147);
             this.cancionesList.TabIndex = 8;
             // 
             // borrarBtn
             // 
-            this.borrarBtn.Location = new System.Drawing.Point(260, 54);
+            this.borrarBtn.Location = new System.Drawing.Point(356, 77);
             this.borrarBtn.Name = "borrarBtn";
             this.borrarBtn.Size = new System.Drawing.Size(100, 44);
             this.borrarBtn.TabIndex = 6;
@@ -208,7 +200,7 @@
             // 
             // intercambiarBtn
             // 
-            this.intercambiarBtn.Location = new System.Drawing.Point(260, 122);
+            this.intercambiarBtn.Location = new System.Drawing.Point(356, 180);
             this.intercambiarBtn.Name = "intercambiarBtn";
             this.intercambiarBtn.Size = new System.Drawing.Size(100, 44);
             this.intercambiarBtn.TabIndex = 13;
@@ -229,7 +221,6 @@
             this.Controls.Add(this.borrarBtn);
             this.Controls.Add(this.cancionesList);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.siguienteBtn);
             this.Controls.Add(this.anteriorBtn);
             this.Controls.Add(this.playBtn);
@@ -251,7 +242,6 @@
         private System.Windows.Forms.NumericUpDown duracionInt;
         private System.Windows.Forms.TextBox nombreText;
         private System.Windows.Forms.Button agregarPrincipioBtn;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button agregarFinalBtn;
         private System.Windows.Forms.ListBox cancionesList;
