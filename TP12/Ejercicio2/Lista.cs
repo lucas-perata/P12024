@@ -1,138 +1,269 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ejercicio2
 {
     internal class Lista
     {
         public Cancion NodoInicial = null;
+        public Cancion NodoFinal = null;
+
         public void AgregarPrincipio(Cancion nueva)
         {
-
-            if(NodoInicial == null)
+            if (NodoInicial == null)
             {
-                nueva.Numero = 1; 
+                nueva.Numero = 1;
                 NodoInicial = nueva;
+                NodoFinal = nueva;
+                NodoFinal.Siguiente = NodoInicial;
+                NodoInicial.Anterior = NodoFinal;
             }
             else
             {
-                Cancion aux = NodoInicial;
+                nueva.Siguiente = NodoInicial;
+                NodoInicial.Anterior = nueva;
                 NodoInicial = nueva;
-                NodoInicial.Siguiente = aux; 
-                AcomodarNumeros(NodoInicial);
+                NodoFinal.Siguiente = NodoInicial;
+                NodoInicial.Anterior = NodoFinal;
+                ActualizarNumeros();
             }
-        }
-
-        private void AcomodarNumeros(Cancion cancion)
-        {
-                            cancion.Numero += 1;
-            if(cancion.Siguiente != null)
-                AcomodarNumeros(cancion.Siguiente);
         }
 
         public void AgregarFinal(Cancion nueva)
         {
-            nueva.Numero = ProximoNumero();
-            Cancion ultimo = BuscarUltimo(NodoInicial);
-            ultimo.Siguiente = nueva;
-
-        }
-
-        private int BuscarMaximo(Cancion cancion, int numero)
-        {
-            int max = cancion.Numero > numero ? cancion.Numero : numero; 
-
-            if(cancion.Siguiente != null)
+            if (NodoInicial == null)
             {
-                return BuscarMaximo(cancion.Siguiente, max);
+                AgregarPrincipio(nueva);
             }
             else
             {
-                return max; 
+                nueva.Numero = ProximoNumero();
+                nueva.Anterior = NodoFinal;
+                NodoFinal.Siguiente = nueva;
+                NodoFinal = nueva;
+                NodoFinal.Siguiente = NodoInicial;
+                NodoInicial.Anterior = NodoFinal;
             }
         }
 
-        private int ProximoNumero()
+        public void AgregarPosition(int numero, Cancion nueva)
         {
-            if (NodoInicial == null) return 1;
+            if(NodoInicial == null)
+            {
+                AgregarPrincipio(nueva);
+                return;
+            } 
+            else if (numero == 1)
+            {
+                nueva.Siguiente = NodoInicial;
+                NodoFinal.Siguiente = nueva;
+                NodoInicial = nueva;
 
-            int max = BuscarMaximo(NodoInicial, NodoInicial.Numero);
+                AcomodarNumeros(NodoInicial);
+                return; 
+            }
 
-            return max + 1; 
+            Cancion actual = NodoInicial;
+            int posicionActual = 1;
+
+            do
+            {
+                if (posicionActual == numero - 1)
+                {
+                    nueva.Siguiente = actual.Siguiente;
+                    actual.Siguiente = nueva;
+
+                    if (actual == NodoFinal)
+                        NodoFinal = nueva;
+
+                    AcomodarNumeros(NodoInicial);
+                    return;
+                }
+
+                actual = actual.Siguiente;
+                posicionActual++;
+            } while (actual != NodoInicial); 
         }
 
-        private Cancion BuscarUltimo(Cancion cancion)
-        {
-            //la lista este vacia
-            if (cancion == null) return null;
-            //que no sea el ultimo
-            if (cancion.Siguiente != null)
-                return BuscarUltimo(cancion.Siguiente);
-            else
-                return cancion;
-        }
         public void QuitarPrimero()
         {
             if (NodoInicial != null)
             {
-                NodoInicial = NodoInicial.Siguiente;
+                if (NodoInicial == NodoFinal) 
+                {
+                    NodoInicial = null;
+                    NodoFinal = null;
+                }
+                else
+                {
+                    NodoInicial = NodoInicial.Siguiente;
+                    NodoInicial.Anterior = NodoFinal;
+                    NodoFinal.Siguiente = NodoInicial;
+                }
             }
         }
+
+        public int ProximoNumero()
+        {
+            if (NodoInicial == null)
+                return 1; 
+            int maxNumero = NodoInicial.Numero;
+            Cancion actual = NodoInicial.Siguiente;
+
+            while (actual != NodoInicial)
+            {
+                if (actual.Numero > maxNumero)
+                {
+                    maxNumero = actual.Numero;
+                }
+                actual = actual.Siguiente;
+            }
+
+            return maxNumero + 1; 
+        }
+
         public void QuitarUltimo()
         {
-            //necesitamos buscar el anteultimo
-            Cancion anteultimo = BuscarAnteultimo(NodoInicial);
-            if (anteultimo != null)
-                anteultimo.Siguiente = null;
-            else
-                NodoInicial = null;
-        }
-
-        private Cancion BuscarAnteultimo(Cancion cancion)
-        {
-            if (cancion == null) return null; //lista vacia
-            if (cancion.Siguiente == null) return null; //hay un solo elemento
-            if (cancion.Siguiente.Siguiente != null)
-                return BuscarAnteultimo(cancion.Siguiente);
-            else
-                return cancion;
-        }
-
-        private Cancion BuscarAnterior(Cancion cancion, int numero)
-        {
-            if (cancion.Siguiente != null && cancion.Siguiente.Numero == numero)
-                return cancion;
-            if (cancion.Siguiente != null)
-                return BuscarAnterior(cancion.Siguiente, numero);
-            return null;
+            if (NodoInicial != null)
+            {
+                if (NodoInicial == NodoFinal) 
+                {
+                    NodoInicial = null;
+                    NodoFinal = null;
+                }
+                else
+                {
+                    Cancion anteultimo = BuscarAnteultimo();
+                    if (anteultimo != null)
+                    {
+                        anteultimo.Siguiente = NodoInicial; 
+                        NodoFinal = anteultimo;
+                    }
+                }
+                ActualizarNumeros();
+            }
         }
 
         public void QuitarPosicion(int numero)
         {
             if (NodoInicial != null)
             {
-                if (NodoInicial.Numero == numero)
+                if (NodoInicial.Numero == numero) 
                 {
                     QuitarPrimero();
                 }
                 else
                 {
-                    Cancion ultimo = BuscarUltimo(NodoInicial);
-                    if (ultimo != null && ultimo.Numero == numero)
-                        QuitarUltimo();
-                    else
-                    { 
-                       Cancion nodoAnteriorAlElegido =
-                       BuscarAnterior(NodoInicial, numero);
-                        if (nodoAnteriorAlElegido != null)
-                            nodoAnteriorAlElegido.Siguiente =
-                           nodoAnteriorAlElegido.Siguiente.Siguiente;
+                    Cancion anterior = BuscarAnterior(numero);
+                    if (anterior != null && anterior.Siguiente != null)
+                    {
+                        if (anterior.Siguiente == NodoFinal) 
+                        {
+                            QuitarUltimo();
+                        }
+                        else 
+                        {
+                            anterior.Siguiente = anterior.Siguiente.Siguiente;
+                        }
+                        ActualizarNumeros();
                     }
                 }
             }
         }
+
+        private void ActualizarNumeros()
+        {
+            if (NodoInicial == null) return;
+
+            int numero = 1;
+            Cancion actual = NodoInicial;
+            do
+            {
+                actual.Numero = numero++;
+                actual = actual.Siguiente;
+            } while (actual != NodoInicial);
+        }
+
+        private void AcomodarNumeros(Cancion nodo)
+        {
+            if (nodo == null) return;
+
+            Cancion actual = nodo;
+            int numeroActual = 1;
+
+            do
+            {
+                actual.Numero = numeroActual;
+                numeroActual++;
+                actual = actual.Siguiente;
+            } while (actual != NodoInicial); 
+        }
+
+        private Cancion BuscarAnteultimo()
+        {
+            if (NodoInicial == null || NodoInicial == NodoFinal) return null;
+
+            Cancion actual = NodoInicial;
+            while (actual.Siguiente != NodoFinal)
+            {
+                actual = actual.Siguiente;
+            }
+            return actual;
+        }
+
+        private Cancion BuscarAnterior(int numero)
+        {
+            if (NodoInicial == null) return null;
+
+            Cancion actual = NodoInicial;
+            do
+            {
+                if (actual.Siguiente != null && actual.Siguiente.Numero == numero)
+                    return actual;
+
+                actual = actual.Siguiente;
+            } while (actual != NodoInicial);
+
+            return null;
+        }
+
+        private Cancion BuscarCancionPorNumero(int numero)
+        {
+            Cancion actual = NodoInicial;
+
+            if (actual == null)
+                return null; 
+
+            do
+            {
+                if (actual.Numero == numero)
+                {
+                    return actual; 
+                }
+                actual = actual.Siguiente;
+            } while (actual != NodoInicial); 
+
+            return null; 
+        }
+
+        public void IntercambiarDerecha(int numero)
+        {
+            Cancion cancion = BuscarCancionPorNumero(numero);
+
+            if (cancion != null)
+            {
+                int tempNumero = cancion.Numero;
+                string tempNombre = cancion.Nombre;
+                decimal tempDur = cancion.Duracion;
+
+                cancion.Numero = cancion.Siguiente.Numero;
+                cancion.Nombre = cancion.Siguiente.Nombre;
+                cancion.Duracion = cancion.Siguiente.Duracion;
+
+                cancion.Siguiente.Numero = tempNumero;
+                cancion.Siguiente.Nombre = tempNombre;
+                cancion.Siguiente.Duracion = tempDur;
+            }
+        }
     }
 }
+

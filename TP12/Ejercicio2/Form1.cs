@@ -29,18 +29,23 @@ namespace Ejercicio2
             canciones.AgregarPrincipio(cancion);
 
             this.cancionesList.Items.Clear(); 
-            Listar(canciones.NodoInicial); 
+            Listar(); 
 
         }
 
-        private void Listar(Cancion cancion)
+        private void Listar()
         {
-              this.cancionesList.Items.Add(cancion);
+            if (canciones.NodoInicial == null)
+                return;
 
-              if(cancion.Siguiente != null)
-              {
-                  Listar(cancion.Siguiente); 
-              }
+            Cancion actual = canciones.NodoInicial;
+            do
+            {
+                this.cancionesList.Items.Add(actual);
+                actual = actual.Siguiente;
+            } while (actual != canciones.NodoInicial); 
+
+            lblTotalCanciones.Text = (canciones.ProximoNumero() - 1).ToString(); 
         }
 
         private void agregarFinalBtn_Click(object sender, EventArgs e)
@@ -53,7 +58,7 @@ namespace Ejercicio2
             canciones.AgregarFinal(cancion);
 
             this.cancionesList.Items.Clear();
-            Listar(canciones.NodoInicial);
+            Listar();
 
         }
 
@@ -77,10 +82,32 @@ namespace Ejercicio2
         private void borrarBtn_Click(object sender, EventArgs e)
         {
             string seleccionado = this.cancionesList.SelectedItem.ToString();
-            lblActual.Text = seleccionado[0].ToString();
-            canciones.QuitarPosicion(Convert.ToInt32(seleccionado[0]));
+            int num = int.Parse(seleccionado.Split('-')[0].Trim());
+            canciones.QuitarPosicion(num);
             this.cancionesList.Items.Clear();
-            Listar(canciones.NodoInicial); 
+            Listar(); 
+        }
+
+        private void intercambiarBtn_Click(object sender, EventArgs e)
+        {
+            string seleccionado = this.cancionesList.SelectedItem.ToString();
+            int num = int.Parse(seleccionado.Split('-')[0].Trim());
+            canciones.IntercambiarDerecha(num);
+            this.cancionesList.Items.Clear();
+            Listar();
+        }
+
+        private void posicionBtn_Click(object sender, EventArgs e)
+        {
+            Cancion cancion = new Cancion();
+
+            cancion.Duracion = this.duracionInt.Value;
+            cancion.Nombre = this.nombreText.Text;
+
+            canciones.AgregarPosition((int)this.numPosicion.Value ,cancion);
+
+            this.cancionesList.Items.Clear();
+            Listar();
         }
     }
 }

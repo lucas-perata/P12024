@@ -36,20 +36,24 @@
             this.agregarPrincipioBtn = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.agregarFinalBtn = new System.Windows.Forms.Button();
             this.cancionesList = new System.Windows.Forms.ListBox();
             this.borrarBtn = new System.Windows.Forms.Button();
-            this.agregarFinalBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblActual = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblTotalCanciones = new System.Windows.Forms.Label();
+            this.numPosicion = new System.Windows.Forms.NumericUpDown();
+            this.posicionBtn = new System.Windows.Forms.Button();
+            this.intercambiarBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.duracionInt)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPosicion)).BeginInit();
             this.SuspendLayout();
             // 
             // playBtn
             // 
-            this.playBtn.Location = new System.Drawing.Point(362, 273);
+            this.playBtn.Location = new System.Drawing.Point(260, 269);
             this.playBtn.Name = "playBtn";
             this.playBtn.Size = new System.Drawing.Size(55, 48);
             this.playBtn.TabIndex = 0;
@@ -59,7 +63,7 @@
             // 
             // anteriorBtn
             // 
-            this.anteriorBtn.Location = new System.Drawing.Point(216, 286);
+            this.anteriorBtn.Location = new System.Drawing.Point(114, 282);
             this.anteriorBtn.Name = "anteriorBtn";
             this.anteriorBtn.Size = new System.Drawing.Size(75, 23);
             this.anteriorBtn.TabIndex = 1;
@@ -69,7 +73,7 @@
             // 
             // siguienteBtn
             // 
-            this.siguienteBtn.Location = new System.Drawing.Point(483, 286);
+            this.siguienteBtn.Location = new System.Drawing.Point(381, 282);
             this.siguienteBtn.Name = "siguienteBtn";
             this.siguienteBtn.Size = new System.Drawing.Size(75, 23);
             this.siguienteBtn.TabIndex = 2;
@@ -103,41 +107,25 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(216, 208);
+            this.progressBar1.Location = new System.Drawing.Point(114, 204);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(342, 23);
             this.progressBar1.TabIndex = 6;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.posicionBtn);
+            this.groupBox1.Controls.Add(this.numPosicion);
             this.groupBox1.Controls.Add(this.agregarFinalBtn);
             this.groupBox1.Controls.Add(this.nombreText);
             this.groupBox1.Controls.Add(this.duracionInt);
             this.groupBox1.Controls.Add(this.agregarPrincipioBtn);
-            this.groupBox1.Location = new System.Drawing.Point(635, 81);
+            this.groupBox1.Location = new System.Drawing.Point(533, 77);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(139, 181);
+            this.groupBox1.Size = new System.Drawing.Size(139, 278);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nueva canción";
-            // 
-            // cancionesList
-            // 
-            this.cancionesList.FormattingEnabled = true;
-            this.cancionesList.Location = new System.Drawing.Point(216, 43);
-            this.cancionesList.Name = "cancionesList";
-            this.cancionesList.Size = new System.Drawing.Size(111, 147);
-            this.cancionesList.TabIndex = 8;
-            // 
-            // borrarBtn
-            // 
-            this.borrarBtn.Location = new System.Drawing.Point(362, 87);
-            this.borrarBtn.Name = "borrarBtn";
-            this.borrarBtn.Size = new System.Drawing.Size(100, 44);
-            this.borrarBtn.TabIndex = 6;
-            this.borrarBtn.Text = "Borrar";
-            this.borrarBtn.UseVisualStyleBackColor = true;
-            this.borrarBtn.Click += new System.EventHandler(this.borrarBtn_Click);
             // 
             // agregarFinalBtn
             // 
@@ -149,10 +137,28 @@
             this.agregarFinalBtn.UseVisualStyleBackColor = true;
             this.agregarFinalBtn.Click += new System.EventHandler(this.agregarFinalBtn_Click);
             // 
+            // cancionesList
+            // 
+            this.cancionesList.FormattingEnabled = true;
+            this.cancionesList.Location = new System.Drawing.Point(114, 39);
+            this.cancionesList.Name = "cancionesList";
+            this.cancionesList.Size = new System.Drawing.Size(111, 147);
+            this.cancionesList.TabIndex = 8;
+            // 
+            // borrarBtn
+            // 
+            this.borrarBtn.Location = new System.Drawing.Point(260, 54);
+            this.borrarBtn.Name = "borrarBtn";
+            this.borrarBtn.Size = new System.Drawing.Size(100, 44);
+            this.borrarBtn.TabIndex = 6;
+            this.borrarBtn.Text = "Borrar";
+            this.borrarBtn.UseVisualStyleBackColor = true;
+            this.borrarBtn.Click += new System.EventHandler(this.borrarBtn_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(216, 372);
+            this.label1.Location = new System.Drawing.Point(114, 368);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(141, 13);
             this.label1.TabIndex = 9;
@@ -161,16 +167,15 @@
             // lblActual
             // 
             this.lblActual.AutoSize = true;
-            this.lblActual.Location = new System.Drawing.Point(382, 372);
+            this.lblActual.Location = new System.Drawing.Point(280, 368);
             this.lblActual.Name = "lblActual";
-            this.lblActual.Size = new System.Drawing.Size(35, 13);
+            this.lblActual.Size = new System.Drawing.Size(0, 13);
             this.lblActual.TabIndex = 10;
-            this.lblActual.Text = "label2";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(219, 412);
+            this.label3.Location = new System.Drawing.Point(117, 408);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 13);
             this.label3.TabIndex = 11;
@@ -179,17 +184,44 @@
             // lblTotalCanciones
             // 
             this.lblTotalCanciones.AutoSize = true;
-            this.lblTotalCanciones.Location = new System.Drawing.Point(385, 412);
+            this.lblTotalCanciones.Location = new System.Drawing.Point(283, 408);
             this.lblTotalCanciones.Name = "lblTotalCanciones";
-            this.lblTotalCanciones.Size = new System.Drawing.Size(35, 13);
+            this.lblTotalCanciones.Size = new System.Drawing.Size(0, 13);
             this.lblTotalCanciones.TabIndex = 12;
-            this.lblTotalCanciones.Text = "label4";
+            // 
+            // numPosicion
+            // 
+            this.numPosicion.Location = new System.Drawing.Point(19, 183);
+            this.numPosicion.Name = "numPosicion";
+            this.numPosicion.Size = new System.Drawing.Size(100, 20);
+            this.numPosicion.TabIndex = 7;
+            // 
+            // posicionBtn
+            // 
+            this.posicionBtn.Location = new System.Drawing.Point(19, 209);
+            this.posicionBtn.Name = "posicionBtn";
+            this.posicionBtn.Size = new System.Drawing.Size(100, 44);
+            this.posicionBtn.TabIndex = 8;
+            this.posicionBtn.Text = "Agregar posición";
+            this.posicionBtn.UseVisualStyleBackColor = true;
+            this.posicionBtn.Click += new System.EventHandler(this.posicionBtn_Click);
+            // 
+            // intercambiarBtn
+            // 
+            this.intercambiarBtn.Location = new System.Drawing.Point(260, 122);
+            this.intercambiarBtn.Name = "intercambiarBtn";
+            this.intercambiarBtn.Size = new System.Drawing.Size(100, 44);
+            this.intercambiarBtn.TabIndex = 13;
+            this.intercambiarBtn.Text = "Intercambiar derecha";
+            this.intercambiarBtn.UseVisualStyleBackColor = true;
+            this.intercambiarBtn.Click += new System.EventHandler(this.intercambiarBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(756, 450);
+            this.Controls.Add(this.intercambiarBtn);
             this.Controls.Add(this.lblTotalCanciones);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblActual);
@@ -206,6 +238,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.duracionInt)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPosicion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,6 +260,9 @@
         private System.Windows.Forms.Label lblActual;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblTotalCanciones;
+        private System.Windows.Forms.Button posicionBtn;
+        private System.Windows.Forms.NumericUpDown numPosicion;
+        private System.Windows.Forms.Button intercambiarBtn;
     }
 }
 
