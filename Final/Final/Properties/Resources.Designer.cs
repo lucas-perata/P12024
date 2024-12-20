@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace p2.Properties {
+namespace Final.Properties {
     using System;
     
     

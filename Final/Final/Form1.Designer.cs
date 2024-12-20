@@ -1,4 +1,4 @@
-﻿namespace p2
+﻿namespace Final
 {
     partial class Form1
     {
